@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import Header from './HeaderComponent';
+import Footer from './FooterComponent';
 
 class Main extends Component {
     render() {
         return (
             <div>
-                
+                <Header />
                 <div>
                     <img
                         src="assets/images/main-logo.png"
@@ -13,7 +15,7 @@ class Main extends Component {
                     />
                     <p>Description will come here</p>
                 </div>
-               
+                <Footer />
             </div>
         );
     }
