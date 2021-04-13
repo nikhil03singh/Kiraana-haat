@@ -58,18 +58,23 @@ class Header extends Component {
                         <Collapse isOpen={this.state.isNavOpen} navbar>
                             <Nav navbar>
                                 <NavItem>
-                                    <NavLink className="nav-link" to="/home">
-                                        <span className="fa fa-home fa-lg" /> Home
+                                    <NavLink className="nav-link" to="/pricing">
+                                        <span className="fa fa-home fa-lg" /> Pricing
                       </NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className="nav-link" to="/aboutus">
-                                        <span className="fa fa-info fa-lg" /> About Us
+                                    <NavLink className="nav-link" to="/services">
+                                        <span className="fa fa-info fa-lg" /> Services
                       </NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className="nav-link" to="/contactus">
-                                        <span className="fa fa-address-card fa-lg" /> Contact Us
+                                    <NavLink className="nav-link" to="/resoures">
+                                        <span className="fa fa-address-card fa-lg" /> Resources
+                      </NavLink>
+                                </NavItem>
+                                <NavItem>
+                                    <NavLink className="nav-link" to="/faqs">
+                                        <span className="fa fa-address-card fa-lg" /> FAQs
                       </NavLink>
                                 </NavItem>
                             </Nav>
@@ -89,9 +94,8 @@ class Header extends Component {
                             <div className="col-12 col-sm-6">
                                 <h1>Kiraana Haat</h1>
                                 <p>
-                                    We take inspiration from the World's best cuisines, and create
-                                    a unique fusion experience. Our lipsmacking creations will
-                                    tickle your culinary senses!
+                                    Want to see your business grow? Kiraana Haat offers seller oriented opportunities
+                                    at the lowest price possible. TRY IT NOW to embark your journey to success.
                     </p>
                             </div>
                         </div>
@@ -132,6 +136,12 @@ class Header extends Component {
                             <Button type="submit" value="submit" color="primary">
                                 Login
                   </Button>
+                  <FormGroup>
+                  <Label>New to Kiraana Haat?</Label>
+                  <Button color="primary">
+                                Register Here
+                  </Button>
+                  </FormGroup>
                         </Form>
                     </ModalBody>
                 </Modal>
