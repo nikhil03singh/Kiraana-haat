@@ -11,6 +11,7 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 class Main extends Component {
     render() {
+
         const HomePage = () => {
             return(
                 <Home />

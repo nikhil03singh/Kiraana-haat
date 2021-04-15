@@ -45,7 +45,7 @@ class Header extends Component {
         return (
             <div>
                 <Navbar dark expand="md">
-                    <div className="container">
+                <div className="container">
                         <NavbarToggler onClick={this.toggleNav} />
                         <NavbarBrand className="mr-auto" href="/">
                             <img
@@ -58,26 +58,31 @@ class Header extends Component {
                         <Collapse isOpen={this.state.isNavOpen} navbar>
                             <Nav navbar>
                                 <NavItem>
-                                    <NavLink className="nav-link" to="/home">
-                                        <span className="fa fa-home fa-lg" /> Home
-                      </NavLink>
+                                    <NavLink className="nav-link" to="/pricing">
+                                        <span className="fa fa-home fa-lg" /> Pricing
+                                    </NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className="nav-link" to="/aboutus">
-                                        <span className="fa fa-info fa-lg" /> About Us
-                      </NavLink>
+                                    <NavLink className="nav-link" to="/services">
+                                        <span className="fa fa-info fa-lg" /> Services
+                                    </NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className="nav-link" to="/contactus">
-                                        <span className="fa fa-address-card fa-lg" /> Contact Us
-                      </NavLink>
+                                    <NavLink className="nav-link" to="/resources">
+                                        <span className="fa fa-address-card fa-lg" /> Resources
+                                    </NavLink>
+                                </NavItem>
+                                <NavItem>
+                                    <NavLink className="nav-link" to="/faqs">
+                                        <span className="fa fa-address-card fa-lg" /> FAQs
+                                    </NavLink>
                                 </NavItem>
                             </Nav>
                             <Nav className="ml-auto" navbar>
                                 <NavItem>
-                                    <Button className="btn btn-dark" outline onClick={this.toggleModal}>
+                                    <Button className="outline-dark" color="outline-dark" outline onClick={this.toggleModal}>
                                         <span className="fa fa-sign-in fa-lg" /> Login
-                      </Button>
+                                    </Button>
                                 </NavItem>
                             </Nav>
                         </Collapse>
@@ -126,12 +131,18 @@ class Header extends Component {
                                         name="remember"
                                         innerRef={input => (this.remember = input)}
                                     />
-                      Remember me
-                    </Label>
+                                    Remember me
+                                </Label>
                             </FormGroup>
                             <Button type="submit" value="submit" color="primary">
                                 Login
-                  </Button>
+                            </Button>
+                            <FormGroup>
+                                <Label>New to Kiraana Haat?  </Label>
+                                <Button type="submit" value="submit" color="link" className="mb-1" >
+                                    Register Here
+                                </Button>
+                            </FormGroup>
                         </Form>
                     </ModalBody>
                 </Modal>
