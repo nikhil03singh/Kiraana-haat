@@ -21,8 +21,11 @@ function Footer(props) {
                         <address>
                             <br />
                             <i className="fa fa-phone fa-lg"></i>: +91 1234 5678<br />
+                            <i className="fa fa-phone fa-lg"></i>: +91 99638 25364<br />
                             <i className="fa fa-envelope fa-lg"></i>: <a href="mailto:kiraana_haat@food.net">
-                                kiraana_haat@food.net</a>
+                                kiraana_haat@food.net</a><br />
+                            <i className="fa fa-envelope fa-lg"></i>: <a href="mailto:kiraana_haat_support@food.net">
+                            kiraana_haat_support@food.net</a>
                         </address>
                     </div>
                     <div className="col-12 col-sm-4 align-self-center">

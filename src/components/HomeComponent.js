@@ -1,7 +1,22 @@
 import React from 'react';
+import {Jumbotron} from 'reactstrap';
 
 function Home(props) {
     return (
+        <div>
+        <Jumbotron>
+                    <div className="container">
+                        <div className="row row-header">
+                            <div className="col-12 col-sm-6">
+                                <h1>Kiraana Haat</h1>
+                                <p>
+                                    Want to see your business grow? Kiraana Haat offers seller oriented opportunities
+                                    at the lowest price possible. TRY IT NOW to embark your journey to success.
+                    </p>
+                            </div>
+                        </div>
+                    </div>
+        </Jumbotron>
         <div class="container">
             <div class="centr">
             <div class="col-12 order-sm-center">
@@ -48,6 +63,7 @@ function Home(props) {
                     </div>
                 </div>
             </div>
+        </div>
     </div>
     )
 }
