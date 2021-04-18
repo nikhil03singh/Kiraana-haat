@@ -2,7 +2,7 @@ import React from 'react';
 
 function FAQs(props) {
     return(
-        <div className="container">
+        <div className="container"><br />
             <h4>FAQs</h4>
             <h3>Frequently asked questions by our partners.</h3><br></br>
             <h6>How do I contact support?</h6>

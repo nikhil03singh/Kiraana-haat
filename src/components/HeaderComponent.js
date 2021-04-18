@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Jumbotron, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Input, Label } from 'reactstrap';
-import { NavLink } from 'react-router-dom';
+import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Input, Label } from 'reactstrap';
+import { NavLink, Route, Link, Switch, BrowserRouter as Router } from 'react-router-dom';
+import Register from './RegisterComponent';
 
 class Header extends Component {
     constructor(props) {
@@ -56,25 +57,21 @@ class Header extends Component {
                             />
                         </NavbarBrand>
                         <Collapse isOpen={this.state.isNavOpen} navbar>
-                            <Nav navbar>
+                        <Nav navbar>
                                 <NavItem>
-                                    <NavLink className="nav-link" to="/pricing">
-                                        <span className="fa fa-home fa-lg" /> Pricing
+                                    <NavLink className="nav-link" to="/pricing"> Pricing
                                     </NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className="nav-link" to="/services">
-                                        <span className="fa fa-info fa-lg" /> Services
+                                    <NavLink className="nav-link" to="/services"> Services
                                     </NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className="nav-link" to="/resources">
-                                        <span className="fa fa-address-card fa-lg" /> Resources
+                                    <NavLink className="nav-link" to="/resources"> Resources
                                     </NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className="nav-link" to="/faqs">
-                                        <span className="fa fa-address-card fa-lg" /> FAQs
+                                    <NavLink className="nav-link" to="/faqs"> FAQs
                                     </NavLink>
                                 </NavItem>
                             </Nav>
@@ -126,9 +123,15 @@ class Header extends Component {
                             </Button>
                             <FormGroup>
                                 <Label>New to Kiraana Haat?  </Label>
-                                <Button type="submit" value="submit" color="link" className="mb-1" >
-                                    Register Here
-                                </Button>
+                                <Router>
+                                    <Link to="register">Register Here</Link>
+                                    <Switch>
+                                        <Route exact path="/register">
+                                            <Register />
+                                        </Route>
+                                    </Switch>
+                                </Router> 
+                                
                             </FormGroup>
                         </Form>
                     </ModalBody>

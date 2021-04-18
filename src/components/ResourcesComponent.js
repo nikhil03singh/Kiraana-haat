@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 function Resources(props) {
     return(
-        <div className="container">
+        <div className="container"><br />
             <h4>Resources</h4>
             <h3>Welcome to selling with Kiraana-Haat!!!</h3><br></br>
             <h5>We are more than happy to be partnered with you. </h5><br></br>

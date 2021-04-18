@@ -19,7 +19,7 @@ function Home(props) {
         </Jumbotron>
         <div class="container">
             <div class="centr">
-            <div class="col-12 order-sm-center">
+            <div class="col-12 order-sm-center"><br />
                     <h3>Why use Kiraana Haat?</h3>
                 </div>
             </div>
