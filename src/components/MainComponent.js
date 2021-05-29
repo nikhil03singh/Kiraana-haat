@@ -6,7 +6,11 @@ import Pricing from './PricingComponent';
 import Services from './ServicesComponent';
 import Resources from './ResourcesComponent';
 import FAQs from './FAQsComponent';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import Login from "./Login"
+import ForgotPassword from "./ForgotPassword"
+import Signup from "./Signup"
+import { AuthProvider } from "../Contexts/AuthContext"
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 class Main extends Component {
@@ -23,14 +27,21 @@ class Main extends Component {
                 <Header />
                 <TransitionGroup>
                     <CSSTransition classNames="page" timeout={300}>
-                        <Switch>
-                            <Route path="/home" component={HomePage} />
-                            <Route exact path="/pricing" component={() => <Pricing/>} />
-                            <Route exact path="/services" component={() => <Services />} />
-                            <Route exact path="/resources" component={() => <Resources />} /> 
-                            <Route exact path="/faqs" component={() => <FAQs />} /> 
-                            <Redirect to="/home" />
-                        </Switch>
+                        <Router>
+                            <AuthProvider>
+                            <Switch>
+                                <Route path="/home" component={HomePage} />
+                                <Route path="/pricing" component={() => <Pricing/>} />
+                                <Route path="/services" component={() => <Services />} />
+                                <Route path="/resources" component={() => <Resources />} /> 
+                                <Route path="/faqs" component={() => <FAQs />} /> 
+                                <Route path="/signup" component={()=><Signup/>} />
+                                <Route path="/login" component={()=><Login/>} />
+                                <Route path="/forgot-password" component={()=><ForgotPassword/>} />
+                                <Redirect to="/home" />
+                                </Switch>
+                            </AuthProvider>
+                        </Router>
                     </CSSTransition>
                 </TransitionGroup>
                 <Footer />
