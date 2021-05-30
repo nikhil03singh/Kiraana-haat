@@ -1,10 +1,16 @@
 import React, { useState} from 'react';
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import { Button } from "react-bootstrap"
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 const Header = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggle = () => setIsOpen(!isOpen);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+    const toggle = () =>{ 
+        setIsOpen(!isOpen);
+        setDropdownOpen(prevState => !prevState);
+        }
 
         return (
             <div>
@@ -42,10 +48,27 @@ const Header = (props) => {
                             <Nav className="ml-auto" navbar>
                                 <NavItem>
                                     <NavLink href="/login"  className="outline-dark" style={{ textDecoration: 'none',
-                                color: "fade white" }}>
+                                        color: "fade white" }}>
                                         LOGIN
                                     </NavLink>
-                                </NavItem>
+                                </NavItem>                       
+                                <Dropdown isOpen={dropdownOpen} toggle={toggle}>
+                                    <DropdownToggle caret >                    
+                                    
+                                    </DropdownToggle>
+                                    <DropdownMenu>
+                                        <DropdownItem >                       
+                                            <NavLink  href="/dashboard"className="outline-dark" style={{ textDecoration: 'none',
+                                                color: "black"}}> Dashboard
+                                            </NavLink>        
+                                        </DropdownItem>
+                                        <DropdownItem>                                                    
+                                            <Button variant="link" >
+                                                <a href='/logout'> Log Out </a>
+                                            </Button>                                                    
+                                        </DropdownItem>
+                                    </DropdownMenu>
+                                </Dropdown>
                             </Nav>
                         </Collapse>
                     </div>

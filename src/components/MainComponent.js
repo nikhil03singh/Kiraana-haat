@@ -9,6 +9,10 @@ import FAQs from './FAQsComponent';
 import Login from "./Login"
 import ForgotPassword from "./ForgotPassword"
 import Signup from "./Signup"
+import Logout from "./Logout"
+import PrivateRoute from "./PrivateRoute"
+import Dashboard from "./Dashboard"
+import UpdateProfile from "./UpdateProfile"
 import { AuthProvider } from "../Contexts/AuthContext"
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
@@ -35,6 +39,9 @@ class Main extends Component {
                                 <Route path="/services" component={() => <Services />} />
                                 <Route path="/resources" component={() => <Resources />} /> 
                                 <Route path="/faqs" component={() => <FAQs />} /> 
+                                <PrivateRoute exact path="/dashboard" component={()=> <Dashboard/>} />
+                                <PrivateRoute path="/update-profile" component={()=> <UpdateProfile/>} />
+                                <Route path="/logout" component={()=> <Logout/>} />
                                 <Route path="/signup" component={()=><Signup/>} />
                                 <Route path="/login" component={()=><Login/>} />
                                 <Route path="/forgot-password" component={()=><ForgotPassword/>} />
