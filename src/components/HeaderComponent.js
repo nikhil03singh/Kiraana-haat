@@ -79,6 +79,10 @@ const Header = (props) => {
                                                     color: "black"}}>                       
                                                 &nbsp;Dashboard      
                                             </DropdownItem>
+                                            <DropdownItem href="/inventory" style={{ textDecoration: 'none',
+                                                    color: "black"}}>                       
+                                                Manage Inventory      
+                                            </DropdownItem>
                                             <DropdownItem onClick={logout}className="fa fa-sign-out">
                                             &nbsp;Logout
                                             </DropdownItem>

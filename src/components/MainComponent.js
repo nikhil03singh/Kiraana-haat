@@ -11,6 +11,8 @@ import ForgotPassword from "./ForgotPassword"
 import Signup from "./Signup"
 import PrivateRoute from "./PrivateRoute"
 import Dashboard from "./Dashboard"
+import Inventory from "./Inventory"
+import Additem from "./Additem"
 import UpdateProfile from "./UpdateProfile"
 import { AuthProvider } from "../Contexts/AuthContext"
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
@@ -60,6 +62,8 @@ const Main =() => {
                                 <Route path="/faqs" component={() => <FAQs />} /> 
                                 <PrivateRoute exact path="/dashboard" component={()=> <Dashboard/>} />
                                 <PrivateRoute path="/update-profile" component={()=> <UpdateProfile/>} />
+                                <PrivateRoute path="/inventory" component={()=> <Inventory/>} />
+                                <PrivateRoute path="/additem" component={()=> <Additem/>} />
                                 <Route path="/signup" component={()=><Signup/>} />
                                 <Route path="/login" component={()=><Login/>} />
                                 <Route path="/forgot-password" component={()=><ForgotPassword/>} />
