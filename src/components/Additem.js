@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Card } from "react-bootstrap"
 import { Container } from "react-bootstrap"
 import {Redirect} from 'react-router-dom';
-
+import app from "../firebase";
 class Additem extends Component {
     constructor() {
         super();
@@ -14,6 +14,7 @@ class Additem extends Component {
             max:5,
             min:0
         };
+        this.rootRef = app.database().ref("Items/");
          
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -62,19 +63,32 @@ class Additem extends Component {
       
         if(this.validate()){
             console.log(this.state);
-      
             let input = {};
             input["name"] = "";
             this.setState({input:input});
-
         }
+        
+
       }
       onSubmit = (e) => {
         e.preventDefault();
+        var name=document.getElementById("name").value;
+        var quantity=document.getElementById("quantity").value;
+        this.rootRef.push({
+          ProductName: name,
+          ProductQuantity: quantity
+        })
+        window.location.reload();
         return  <Redirect  to="/additem" />
       }
       onSubmitc = (e) => {
         e.preventDefault();
+        var name=document.getElementById("name").value;
+        var quantity=document.getElementById("quantity").value;
+        this.rootRef.push({
+          ProductName: name,
+          ProductQuantity: quantity
+        })
         return  <Redirect  to="/home" />
       }
       validate(){
@@ -121,7 +135,7 @@ class Additem extends Component {
           <div class="form-group">
             <label for="Address">Product Quantity:</label>
                 <button onClick={this.IncrementItem}>+</button>
-                <input className="inputne" value={this.state.quantity} onChange={this.handleChange}/>
+                <input className="inputne" value={this.state.quantity} id="quantity" onChange={this.handleChange}/>
                 <button onClick = {this.DecreaseItem}>-</button>
             </div>
               

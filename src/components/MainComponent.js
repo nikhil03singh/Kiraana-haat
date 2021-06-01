@@ -49,6 +49,7 @@ const Main =() => {
 
         return (
             <div>
+              
                 <Header />
                 <TransitionGroup>
                     <CSSTransition classNames="page" timeout={300}>
