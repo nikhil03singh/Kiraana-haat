@@ -1,8 +1,10 @@
-import React, { useRef, useState } from "react"
+import React, { useRef, useState , useEffect} from "react"
 import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuth } from "../Contexts/AuthContext"
 import { Link } from "react-router-dom"
 import { Container } from "react-bootstrap"
+import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 export default function ForgotPassword() {
   const emailRef = useRef()
@@ -10,7 +12,13 @@ export default function ForgotPassword() {
   const [error, setError] = useState("")
   const [message, setMessage] = useState("")
   const [loading, setLoading] = useState(false)
+  let history = useHistory();
+  const { user } = useSelector((state) => ({ ...state }));
 
+  useEffect(() => {
+    if (user && user.token) history.push("/");
+  }, [user]);
+  
   async function handleSubmit(e) {
     e.preventDefault()
 

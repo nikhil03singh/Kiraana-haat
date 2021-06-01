@@ -1,8 +1,9 @@
-import React, { useRef, useState } from "react"
+import React, { useRef, useState, useEffect  } from "react"
 import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuth } from "../Contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 import { Container } from "react-bootstrap"
+import { useSelector } from "react-redux";
 
 export default function Signup() {
   const nameRef=useRef()
@@ -13,6 +14,12 @@ export default function Signup() {
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const history = useHistory()
+
+  const { user } = useSelector((state) => ({ ...state }));
+
+  useEffect(() => {
+    if (user && user.token) history.push("/");
+  }, [user]);
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -68,8 +75,8 @@ export default function Signup() {
               <Form.Label>Password Confirmation</Form.Label>
               <Form.Control type="password" placeholder="Confirm Password" ref={passwordConfirmRef} required />
             </Form.Group>
-            <Button disabled={loading} className="w-100" type="submit">
-              Sign Up
+            <Button disabled={loading} className="w-100 fa fa-sign-in fa-fw" type="submit">
+            &nbsp; Sign Up
             </Button>
           </Form>
         </Card.Body>
