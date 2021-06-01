@@ -1,16 +1,31 @@
 import React, { useState} from 'react';
-import { Button } from "react-bootstrap"
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, 
+    Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import firebase from "../firebase";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 const Header = (props) => {
-  const [isOpen, setIsOpen] = useState(false);
+    
+    const [isOpen, setIsOpen] = useState(false);
+    const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+    let dispatch = useDispatch();
+    let { user } = useSelector((state) => ({ ...state }));
+    let history = useHistory();
 
     const toggle = () =>{ 
         setIsOpen(!isOpen);
         setDropdownOpen(prevState => !prevState);
         }
+    const logout = () => {
+        firebase.auth().signOut();
+        dispatch({
+            type: "LOGOUT",
+            payload: null,
+        });
+        history.push("/login")
+    };
 
         return (
             <div>
@@ -27,7 +42,7 @@ const Header = (props) => {
                         </NavbarBrand>
                         <NavbarToggler onClick={toggle} />
                         <Collapse isOpen={isOpen} navbar>
-                            <Nav className="mr-auto" navbar>
+                            <Nav className="mr-auto" navbar> 
                                 <NavItem>
                                     <NavLink  href="/pricing"> Pricing
                                     </NavLink>
@@ -46,37 +61,36 @@ const Header = (props) => {
                                 </NavItem>
                             </Nav>
                             <Nav className="ml-auto" navbar>
-                                <NavItem>
-                                    <NavLink href="/login"  className="outline-dark" style={{ textDecoration: 'none',
-                                        color: "fade white" }}>
-                                        LOGIN
-                                    </NavLink>
-                                </NavItem>                       
-                                <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-                                    <DropdownToggle caret >                    
-                                    
-                                    </DropdownToggle>
-                                    <DropdownMenu>
-                                        <DropdownItem >                       
-                                            <NavLink  href="/dashboard"className="outline-dark" style={{ textDecoration: 'none',
-                                                color: "black"}}> Dashboard
-                                            </NavLink>        
-                                        </DropdownItem>
-                                        <DropdownItem>                                                    
-                                            <Button variant="link" >
-                                                <a href='/logout'> Log Out </a>
-                                            </Button>                                                    
-                                        </DropdownItem>
-                                    </DropdownMenu>
-                                </Dropdown>
-                            </Nav>
+                                {!user &&(
+                                    <NavItem>
+                                        <NavLink href="/login" className="fa fa-sign-in" style={{ textDecoration: 'none',
+                                            color: "white" }}>
+                                            &nbsp; Login
+                                        </NavLink>
+                                    </NavItem>
+                                )}
+                                {user && (
+                                    <Dropdown isOpen={dropdownOpen} toggle={toggle}  >
+                                        <DropdownToggle caret >
+                                            {user.email && user.email.split("@")[0]}
+                                        </DropdownToggle>
+                                        <DropdownMenu>
+                                            <DropdownItem href="/dashboard"className="fa fa-user " style={{ textDecoration: 'none',
+                                                    color: "black"}}>                       
+                                                &nbsp;Dashboard      
+                                            </DropdownItem>
+                                            <DropdownItem onClick={logout}className="fa fa-sign-out">
+                                            &nbsp;Logout
+                                            </DropdownItem>
+                                        </DropdownMenu>
+                                    </Dropdown>
+                                )}                                
+                            </Nav>  
                         </Collapse>
                     </div>
-                </Navbar>
-                
+                </Navbar>                
         </div>
         );
     }
-
 
 export default Header;

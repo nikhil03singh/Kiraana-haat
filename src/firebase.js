@@ -3,14 +3,14 @@ import "firebase/auth"
 
 
 const app = firebase.initializeApp({
-    apiKey: "AIzaSyAtmfwNQDE6bRcR6g9inPfF5pznbtkkvPY",
-    authDomain: "kiraanahaat.firebaseapp.com",
-    databaseURL: "https://kiraanahaat-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "kiraanahaat",
-    storageBucket: "kiraanahaat.appspot.com",
-    messagingSenderId: "724349304278",
-    appId: "1:724349304278:web:b36c01de78d548bd1f7877",
-    measurementId: "G-M5L66TZSPB"
+    apiKey: "AIzaSyDOowsHh0pcPYHd4v9y47YLBka8LD71xsk",
+    authDomain: "kiraanahaatnew.firebaseapp.com",
+    databaseURL: "https://kiraanahaatnew-default-rtdb.firebaseio.com",
+    projectId: "kiraanahaatnew",
+    storageBucket: "kiraanahaatnew.appspot.com",
+    messagingSenderId: "545158943327",
+    appId: "1:545158943327:web:b014a512f5604915a701ea",
+    measurementId: "G-R3ESKQMPRZ"
 })
 
 export const auth = app.auth()
