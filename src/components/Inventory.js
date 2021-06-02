@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Card } from "react-bootstrap"
 import { Container } from "react-bootstrap"
 import { Link } from "react-router-dom"
+import app from "../firebase";
+import Login from "./Login"
 
 class Inventory extends Component {
     constructor() {
@@ -10,7 +12,7 @@ class Inventory extends Component {
           input: {},
           errors: {}
         };
-         
+        this.rootRef = app.database().ref("shops/");
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
       }
@@ -37,6 +39,16 @@ class Inventory extends Component {
             this.setState({input:input});
       
         }
+        var name=document.getElementById("name").value;
+        var address=document.getElementById("address").value;
+        var gst=document.getElementById("gstno").value;
+        var phone=document.getElementById("phone").value;
+        this.rootRef.push({
+          GST: gst,
+          ShopAddress: address,
+          ShopContactNo: phone,
+          ShopName: name
+        })
       }
       validate(){
           let input = this.state.input;
