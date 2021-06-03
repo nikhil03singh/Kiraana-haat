@@ -41,13 +41,9 @@ export default function ForgotPassword() {
       style={{ minHeight: "100vh" }}
     >
     <div className="w-100" style={{ maxWidth: "400px" }}>
-      <Card style={{
-        borderColor: "black",
-        color: "black",
-        borderRadius: "50px"
-      }}>
+    <Card id="card" border="success" style={{ borderRadius: "20px" }}>
+      <Card.Header><h2 className="text-center mb-2">Password Reset</h2></Card.Header>
         <Card.Body>
-          <h2 className="text-center mb-4">Password Reset</h2>
           {error && <Alert variant="danger">{error}</Alert>}
           {message && <Alert variant="success">{message}</Alert>}
           <Form onSubmit={handleSubmit}>

@@ -47,9 +47,9 @@ export default function UpdateProfile() {
       style={{ minHeight: "100vh" }}
     >
     <div className="w-100" style={{ maxWidth: "400px" }}>
-      <Card>
+    <Card id="card" border="success" style={{ borderRadius: "20px" }}>
+      <Card.Header><h2 className="text-center mb-2">Update Profile</h2></Card.Header>
         <Card.Body>
-          <h2 className="text-center mb-4">Update Profile</h2>
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
             <Form.Group id="email">

@@ -63,11 +63,3 @@ address {
 .centr {
   text-align: center;
 }
-
-.custom {
-  position: center;
-  margin-top: 20px;
-  width: 48px;
-  height: 50px;
-  border: none;
-}

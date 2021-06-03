@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Card } from "react-bootstrap"
-import { Container } from "react-bootstrap"
-import { Link } from "react-router-dom"
+import { Card,Container } from "react-bootstrap"
+import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Link } from 'react-router-dom';
 import app from "../firebase";
 import Login from "./Login"
 
@@ -106,12 +106,20 @@ class Inventory extends Component {
       }
       render(){
     return(
+      <div className="container">
+        <div className="row">
+          <Breadcrumb>
+            <BreadcrumbItem><Link to='/ome'>Home</Link></BreadcrumbItem>
+            <BreadcrumbItem active>Inventory</BreadcrumbItem>
+          </Breadcrumb>
+        </div>
         <Container
         className="d-flex align-items-center justify-content-center"
         style={{ minHeight: "100vh" }}
         >
         <div className="w-100" style={{ maxWidth: "400px" }}>
-        <Card>
+        <Card id="card" border="success">
+          <Card.Header><strong>Add Shop</strong></Card.Header>
             <Card.Body>
             <form onSubmit={this.handleSubmit}>
   
@@ -180,6 +188,7 @@ class Inventory extends Component {
         </div>
         </div>
         </Container>
+        </div>
     )
     }
 }

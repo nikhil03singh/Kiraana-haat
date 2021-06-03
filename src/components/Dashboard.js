@@ -13,9 +13,9 @@ export default function Dashboard() {
       style={{ minHeight: "100vh" }}
     >
         <div className="w-100" style={{ maxWidth: "400px" }}>
-            <Card>
+          <Card id="card" border="success" style={{ borderRadius: "20px" }}>
+            <Card.Header><h2 className="text-center mb-2">Profile</h2></Card.Header>
                 <Card.Body>
-                <h2 className="text-center mb-4">Profile</h2>
                 {error && <Alert variant="danger">{error}</Alert>}
                 <strong>Email:</strong> {currentUser.email}
                 <Link to="/update-profile" className="btn btn-primary w-100 mt-3">
