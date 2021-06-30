@@ -2,12 +2,20 @@ import React, { useState } from "react"
 import { Card, Alert, Container } from "react-bootstrap"
 import { useAuth } from "../Contexts/AuthContext"
 import { Link } from "react-router-dom"
+import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 
 export default function Dashboard() {
   const [error] = useState("")
   const { currentUser} = useAuth()
 
   return (
+    <div className="container">
+      <div >
+        <Breadcrumb>
+            <BreadcrumbItem><Link to='/home'>Home</Link></BreadcrumbItem>
+            <BreadcrumbItem active>Dashboard</BreadcrumbItem>
+        </Breadcrumb>
+      </div>
     <Container
       className="d-flex align-items-center justify-content-center"
       style={{ minHeight: "100vh" }}
@@ -25,5 +33,6 @@ export default function Dashboard() {
             </Card>
         </div>
       </Container>
+    </div>
   )
 }

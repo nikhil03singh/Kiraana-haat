@@ -8,7 +8,7 @@ class FAQs extends Component {
     render(){
         return(
             <div className="container">
-                <div className="row">
+                <div >
                     <Breadcrumb>
                         <BreadcrumbItem><Link to='/home'>Home</Link></BreadcrumbItem>
                         <BreadcrumbItem active>FAQs</BreadcrumbItem>

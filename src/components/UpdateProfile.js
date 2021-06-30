@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react"
 import { Form, Button, Card, Alert, Container } from "react-bootstrap"
 import { useAuth } from "../Contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
+import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 
 export default function UpdateProfile() {
   const emailRef = useRef()
@@ -42,6 +43,14 @@ export default function UpdateProfile() {
   }
 
   return (
+    <div className="container">
+      <div>
+        <Breadcrumb>
+            <BreadcrumbItem><Link to='/home'>Home</Link></BreadcrumbItem>
+            <BreadcrumbItem><Link to='/dashboard'>Dashboard</Link></BreadcrumbItem>
+            <BreadcrumbItem active>Profile</BreadcrumbItem>
+        </Breadcrumb>
+      </div>
     <Container
       className="d-flex align-items-center justify-content-center"
       style={{ minHeight: "100vh" }}
@@ -84,9 +93,10 @@ export default function UpdateProfile() {
         </Card.Body>
       </Card>
       <div className="w-100 text-center mt-2">
-        <Link to="/">Cancel</Link>
+        <Link to="/dashboard">Cancel</Link>
       </div>
     </div>
     </Container>
+    </div>
   )
 }

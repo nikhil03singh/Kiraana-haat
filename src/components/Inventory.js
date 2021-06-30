@@ -3,7 +3,7 @@ import { Card,Container } from "react-bootstrap"
 import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import app from "../firebase";
-import Login from "./Login"
+import firebase from "firebase";
 
 class Inventory extends Component {
     constructor() {
@@ -43,11 +43,15 @@ class Inventory extends Component {
         var address=document.getElementById("address").value;
         var gst=document.getElementById("gstno").value;
         var phone=document.getElementById("phone").value;
+        if (firebase.auth().currentUser !== null){
+          var uid = firebase.auth().currentUser.email;
+        }
         this.rootRef.push({
           GST: gst,
           ShopAddress: address,
           ShopContactNo: phone,
-          ShopName: name
+          ShopName: name,
+          ShopOwner: uid
         })
       }
       validate(){
@@ -107,7 +111,7 @@ class Inventory extends Component {
       render(){
     return(
       <div className="container">
-        <div className="row">
+        <div >
           <Breadcrumb>
             <BreadcrumbItem><Link to='/ome'>Home</Link></BreadcrumbItem>
             <BreadcrumbItem active>Inventory</BreadcrumbItem>

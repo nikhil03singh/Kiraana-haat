@@ -1,13 +1,20 @@
 import React from 'react';
+import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 function Pricing(props) {
     return(
         <div class="container">
-            <div class="centr">
-            <div class="col-12 order-sm-center"><br />
-                    <h3>Offered Packages</h3>
+            <div >
+                    <Breadcrumb>
+                        <BreadcrumbItem><Link to='/home'>Home</Link></BreadcrumbItem>
+                        <BreadcrumbItem active>Pricing</BreadcrumbItem>
+                    </Breadcrumb>
                 </div>
-            </div>
+                <div class="col-12 centr"><br />
+                    <strong><h1>Offered Packages</h1></strong>
+                    <hr/>
+                </div>
             <div class="container">
 
                 <div class="row row-content align-items-center">
