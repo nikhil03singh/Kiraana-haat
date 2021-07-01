@@ -4,7 +4,14 @@ import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import app from "../firebase";
 import firebase from "firebase";
-
+var lat=0;
+var long=0;
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(function(position) {
+      lat=position.coords.latitude;
+      long=position.coords.longitude;
+  });
+}
 class Inventory extends Component {
     constructor() {
         super();
@@ -13,7 +20,7 @@ class Inventory extends Component {
           errors: {},
         };
         
-        this.rootRef = app.database().ref("shops/");
+        this.rootRef = app.database().ref("shops/Shop Details/");
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
       }
@@ -57,6 +64,8 @@ class Inventory extends Component {
           ShopName: name,
           ShopOwner: owner,
           PinCode : pincode,
+          Latitude: lat,
+          Longitude: long
           })
 
       }
