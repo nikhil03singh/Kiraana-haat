@@ -10,13 +10,14 @@ class Inventory extends Component {
         super();
         this.state = {
           input: {},
-          errors: {}
+          errors: {},
         };
+        
         this.rootRef = app.database().ref("shops/");
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
       }
-        
+      
       handleChange(event) {
         let input = this.state.input;
         input[event.target.name] = event.target.value;
@@ -36,6 +37,7 @@ class Inventory extends Component {
             input["address"] = "";
             input["phone"] = "";
             input["gstno"] = "";
+            input["pincode"]="";
             this.setState({input:input});
       
         }
@@ -43,16 +45,20 @@ class Inventory extends Component {
         var address=document.getElementById("address").value;
         var gst=document.getElementById("gstno").value;
         var phone=document.getElementById("phone").value;
+        var pincode=document.getElementById("pincode").value;
         if (firebase.auth().currentUser !== null){
-          var uid = firebase.auth().currentUser.email;
+          var owner = firebase.auth().currentUser.email;
         }
-        this.rootRef.push({
+        
+        this.rootRef.child(name).set({
           GST: gst,
           ShopAddress: address,
           ShopContactNo: phone,
           ShopName: name,
-          ShopOwner: uid
-        })
+          ShopOwner: owner,
+          PinCode : pincode,
+          })
+
       }
       validate(){
           let input = this.state.input;
@@ -182,7 +188,19 @@ class Inventory extends Component {
   
               <div className="text-danger">{this.state.errors.phone}</div>
           </div>
-              
+          <div class="form-group">
+            <label for="Pincode">Pin Code:</label>
+            <input 
+              type="text" 
+              name="pincode" 
+              value={this.state.input.pincode}
+              onChange={this.handleChange}
+              class="form-control" 
+              placeholder="Enter pincode" 
+              id="pincode" />
+  
+              <div className="text-danger">{this.state.errors.phone}</div>
+          </div>
           <input type="submit" value="Add Shop" class="btn btn-primary" />
         </form>
             </Card.Body>
@@ -197,4 +215,4 @@ class Inventory extends Component {
     }
 }
 
-export default Inventory
+export default Inventory;
