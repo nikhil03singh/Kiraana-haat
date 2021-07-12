@@ -5,6 +5,15 @@ import { Link } from 'react-router-dom';
 import app from "../firebase";
 import firebase from "firebase";
 
+var lat=0;
+var long=0;
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(function(position) {
+      lat=position.coords.latitude;
+      long=position.coords.longitude;
+  });
+}
+
 class Inventory extends Component {
     constructor() {
         super();
@@ -12,7 +21,7 @@ class Inventory extends Component {
           input: {},
           errors: {}
         };
-        this.rootRef = app.database().ref("shops/");
+        this.rootRef = app.database().ref("shops/Shop Details/");
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
       }
@@ -36,6 +45,7 @@ class Inventory extends Component {
             input["address"] = "";
             input["phone"] = "";
             input["gstno"] = "";
+            input["pincode"]="";
             this.setState({input:input});
       
         }
@@ -43,16 +53,20 @@ class Inventory extends Component {
         var address=document.getElementById("address").value;
         var gst=document.getElementById("gstno").value;
         var phone=document.getElementById("phone").value;
+        var pincode=document.getElementById("pincode").value;
         if (firebase.auth().currentUser !== null){
-          var uid = firebase.auth().currentUser.email;
+          var owner = firebase.auth().currentUser.email;
         }
-        this.rootRef.push({
+        this.rootRef.child(name).set({
           GST: gst,
           ShopAddress: address,
           ShopContactNo: phone,
           ShopName: name,
-          ShopOwner: uid
-        })
+          ShopOwner: owner,
+          PinCode : pincode,
+          Latitude: lat,
+          Longitude: long
+          })
       }
       validate(){
           let input = this.state.input;
@@ -100,7 +114,21 @@ class Inventory extends Component {
               errors["gstno"] = "Please enter valid GST number.";
             }
           }
+
+          if (!input["pincode"]) {
+            isValid = false;
+            errors["pincode"] = "Please enter your pincode.";
+          }
       
+          if (typeof input["pincode"] !== "undefined") {
+            if (!pattern.test(input["pincode"])) {
+              isValid = false;
+              errors["pincode"] = "Please enter only number.";
+            }else if(input["pincode"].length !== 6){
+              isValid = false;
+              errors["pincode"] = "Please enter valid pincode.";
+            }
+          }
       
           this.setState({
             errors: errors
@@ -182,7 +210,19 @@ class Inventory extends Component {
   
               <div className="text-danger">{this.state.errors.phone}</div>
           </div>
-              
+          <div class="form-group">
+            <label for="Pincode">Pin Code:</label>
+            <input 
+              type="text" 
+              name="pincode" 
+              value={this.state.input.pincode}
+              onChange={this.handleChange}
+              class="form-control" 
+              placeholder="Enter pincode" 
+              id="pincode" />
+
+              <div className="text-danger">{this.state.errors.pincode}</div>
+          </div>
           <input type="submit" value="Add Shop" class="btn btn-primary" />
         </form>
             </Card.Body>

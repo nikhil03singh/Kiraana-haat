@@ -4,7 +4,7 @@ import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from "react-router-dom"
 import app from "../firebase";
 
-class Additem extends Component {
+class Addnewitem extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,6 +17,7 @@ class Additem extends Component {
     this.handleDelete = this.handleDelete.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+ 
   handleChange = (e, index) => {
     const items = this.state.form;
     items[index][e.target.name] = e.target.value;
@@ -144,11 +145,9 @@ class Additem extends Component {
           ))}
           <div className="row">
           <div className="col col-md-10 text-right">
-            <Link to ='/addnewitem'>
-            <button type ="button" className="btn btn-secondary">
+            <button onClick={this.addNewRow} className="btn btn-secondary">
               +Add New
             </button>
-            </Link>
             <button onClick={this.handleSubmit} className="ml-2 btn btn-primary">
               Add Items
             </button>
@@ -162,5 +161,5 @@ class Additem extends Component {
     );
   }
 }
-export default Additem;
+export default Addnewitem;
  

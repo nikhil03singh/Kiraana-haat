@@ -13,6 +13,7 @@ import PrivateRoute from "./PrivateRoute"
 import Dashboard from "./Dashboard"
 import Inventory from "./Inventory"
 import Additem from "./Additem"
+import Addnewitem from "./Addnewitem"
 import UpdateProfile from "./UpdateProfile"
 import { AuthProvider } from "../Contexts/AuthContext"
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
@@ -64,6 +65,7 @@ const Main =() => {
                                 <PrivateRoute path="/update-profile" component={()=> <UpdateProfile/>} />
                                 <PrivateRoute path="/inventory" component={()=> <Inventory/>} />
                                 <PrivateRoute path="/additem" component={()=> <Additem/>} />
+                                <PrivateRoute path="/addnewitem" component={()=> <Addnewitem/>} />
                                 <Route path="/signup" component={()=><Signup/>} />
                                 <Route path="/login" component={()=><Login/>} />
                                 <Route path="/forgot-password" component={()=><ForgotPassword/>} />
