@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/Kiraana-haat/static/css/main.6e119e10.chunk.css",
+    "main.js": "/Kiraana-haat/static/js/main.fa18a5cb.chunk.js",
+    "main.js.map": "/Kiraana-haat/static/js/main.fa18a5cb.chunk.js.map",
+    "runtime-main.js": "/Kiraana-haat/static/js/runtime-main.dfb8cf4a.js",
+    "runtime-main.js.map": "/Kiraana-haat/static/js/runtime-main.dfb8cf4a.js.map",
+    "static/css/2.6596b1db.chunk.css": "/Kiraana-haat/static/css/2.6596b1db.chunk.css",
+    "static/js/2.9cb4095c.chunk.js": "/Kiraana-haat/static/js/2.9cb4095c.chunk.js",
+    "static/js/2.9cb4095c.chunk.js.map": "/Kiraana-haat/static/js/2.9cb4095c.chunk.js.map",
+    "index.html": "/Kiraana-haat/index.html",
+    "static/css/2.6596b1db.chunk.css.map": "/Kiraana-haat/static/css/2.6596b1db.chunk.css.map",
+    "static/css/main.6e119e10.chunk.css.map": "/Kiraana-haat/static/css/main.6e119e10.chunk.css.map",
+    "static/js/2.9cb4095c.chunk.js.LICENSE.txt": "/Kiraana-haat/static/js/2.9cb4095c.chunk.js.LICENSE.txt",
+    "static/media/font-awesome.min.css": "/Kiraana-haat/static/media/fontawesome-webfont.f691f37e.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.dfb8cf4a.js",
+    "static/css/2.6596b1db.chunk.css",
+    "static/js/2.9cb4095c.chunk.js",
+    "static/css/main.6e119e10.chunk.css",
+    "static/js/main.fa18a5cb.chunk.js"
+  ]
+}
